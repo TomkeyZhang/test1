@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="wrap_content">
+	<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@android:id/tabhost" android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:orientation="vertical">
+			<LinearLayout android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:orientation="horizontal">
+				<Button android:layout_width="wrap_content"
+					android:layout_height="fill_parent" android:text="返回" />
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="fill_parent" android:layout_weight="1.0"
+					android:text="搜索游戏" />
+			</LinearLayout>
+			<TabWidget android:id="@android:id/tabs"
+				android:layout_width="fill_parent" android:layout_height="wrap_content" />
+			<FrameLayout android:id="@android:id/tabcontent"
+				android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<com.the9.yxdr.view.subview.GameMainSubView
+					android:layout_width="fill_parent" android:layout_height="fill_parent"
+					android:id="@+id/game_main_subview" />
+				<com.the9.yxdr.view.subview.GameTopicSubView
+					android:layout_width="fill_parent" android:layout_height="fill_parent"
+					android:id="@+id/game_topic_subview" />
+				<com.the9.yxdr.view.subview.GameSuggestSubView
+					android:layout_width="fill_parent" android:layout_height="fill_parent"
+					android:id="@+id/game_suggest_subview" />
+				<com.the9.yxdr.view.subview.GameChoiceSubView
+					android:layout_width="fill_parent" android:layout_height="fill_parent"
+					android:id="@+id/game_choice_subview" />
+			</FrameLayout>
+		</LinearLayout>
+	</TabHost>
+</LinearLayout>
