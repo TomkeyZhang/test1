@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="E:\workspaces\maven-anjuke\testgradle\assets" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="E:\workspaces\maven-anjuke\testgradle\build-types\release\assets" />
+    </dataSet>
+
+</merger>

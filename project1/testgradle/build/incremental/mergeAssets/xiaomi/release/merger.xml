@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="unspecified" >
+        <source path="E:\workspaces\maven-anjuke\project1\testgradle\build\exploded-aar\project1.libraries\volley\unspecified\assets" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="E:\workspaces\maven-anjuke\project1\testgradle\assets" />
+    </dataSet>
+    <dataSet config="xiaomi" >
+        <source path="E:\workspaces\maven-anjuke\project1\testgradle\src\xiaomi\assets" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="E:\workspaces\maven-anjuke\project1\testgradle\build-types\release\assets" />
+    </dataSet>
+    <dataSet config="xiaomiRelease" >
+        <source path="E:\workspaces\maven-anjuke\project1\testgradle\src\xiaomiRelease\assets" />
+    </dataSet>
+
+</merger>

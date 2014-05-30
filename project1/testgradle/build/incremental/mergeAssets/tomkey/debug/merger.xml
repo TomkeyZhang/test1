@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="E:\workspaces\maven-anjuke\testgradle\assets" />
+    </dataSet>
+    <dataSet config="tomkey" >
+        <source path="E:\workspaces\maven-anjuke\testgradle\src\tomkey\assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="E:\workspaces\maven-anjuke\testgradle\build-types\debug\assets" />
+    </dataSet>
+    <dataSet config="tomkeyDebug" >
+        <source path="E:\workspaces\maven-anjuke\testgradle\src\tomkeyDebug\assets" />
+    </dataSet>
+
+</merger>

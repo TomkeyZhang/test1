@@ -1,0 +1,143 @@
+/*
+* Nodeclipse/Enide build.gradle template for classic Android project
+*	https://github.com/Nodeclipse/nodeclipse-1/blob/master/org.nodeclipse.enide.editors.gradle/docs/android/build.gradle
+* Gradle Plugin User Guide:
+*	http://tools.android.com/tech-docs/new-build-system/user-guide
+* Usage
+*	1. put in project root
+*	2. check version numbers
+*	3. use from command line or with Gradle for Android	http://marketplace.eclipse.org/content/gradle
+* Support for this template
+*	https://github.com/nodeclipse/nodeclipse-1/issues/
+* History
+*	2014-03-13 android plugin updated to 0.9, see http://tools.android.com/tech-docs/new-build-system/migrating_to_09
+*	2014-04-01 check for gradle version
+*	2014-04-10 wrapper and runAndroidApplication tasks
+* @author Paul Verest 
+*/
+println GradleVersion.current().prettyPrint()
+
+buildscript {
+    repositories {
+        mavenCentral()
+        //jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.9.+' //0.9.2
+    }
+}
+assert gradle.gradleVersion >= "1.10" // android plugin 0.9 requires Gradle 1.10, 1.11
+// after `gradle wrapper` it is possible to use './gradlew build' with Gradle version specified
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
+apply plugin: 'android'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
+	compile project(':libraries:volley')
+    //androidTestCompile 'com.jayway.android.robotium:robotium-solo:4.3.1'
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19"
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+		
+        // Move the tests to tests/java, tests/res, etc...
+        androidTest.setRoot('tests')
+
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+    signingConfigs {
+        //你自己的keystore信息
+       	 	release {
+            	storeFile file("test.keystore")
+            	storePassword "123456"
+            	keyAlias "test"
+            	keyPassword "123456"
+       		}
+    	}
+    buildTypes {
+ 
+        debug {
+            signingConfig signingConfigs.release
+        }
+ 
+        release {
+            signingConfig signingConfigs.release
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    //渠道Flavors，我这里写了一些常用的，你们自己改
+    productFlavors {
+        //GooglePlay{}
+        //Store360{}
+        //QQ{}
+        //Taobao{}
+        //WanDouJia{}
+        //AnZhuo{}
+        //AnZhi{}
+        //BaiDu{}
+        //Store163{}
+        //GFeng{}
+        //AppChina{}
+        //EoeMarket{}
+        //Store91{}
+        //NDuo{}
+        tomkey{}
+        xiaomi{}
+        umeng{}
+    }
+}
+
+//替换AndroidManifest.xml的UMENG_CHANNEL_VALUE字符串为渠道名称
+android.applicationVariants.all{ variant ->
+    variant.processManifest.doLast{
+ 
+        //之前这里用的copy{}，我换成了文件操作，这样可以在v1.11版本正常运行，并保持文件夹整洁
+        //${buildDir}是指./build文件夹
+        //${variant.dirName}是flavor/buildtype，例如GooglePlay/release，运行时会自动生成
+        //下面的路径是类似这样：./build/manifests/GooglePlay/release/AndroidManifest.xml
+        def manifestFile = "${buildDir}/manifests/${variant.dirName}/AndroidManifest.xml"
+ 
+        //将字符串UMENG_CHANNEL_VALUE替换成flavor的名字
+        def updatedContent = new File(manifestFile).getText('UTF-8').replaceAll("UMENG_CHANNEL_VALUE", "${variant.productFlavors[0].name}")
+        new File(manifestFile).write(updatedContent, 'UTF-8')
+ 
+        //将此次flavor的AndroidManifest.xml文件指定为我们修改过的这个文件
+        variant.processResources.manifestFile = file("${buildDir}/manifests/${variant.dirName}/AndroidManifest.xml")
+    }
+}
+/**
+// runAndroidApplication
+task run (type: Exec, dependsOn: ':installTomkeyDebug') << {
+	//TODO update Activity name below or find a way to get it from AndroidManifest.xml
+	if (System.properties['os.name'].toLowerCase().contains('windows')) {
+	    // windows
+	    commandLine 'cmd', '/c', 'adb', 'shell', 'am', 'start', '-n', "com.example.testgradle.MainActivity"      
+	} else {
+	    // linux 
+	    commandLine 'adb', 'shell', 'am', 'start', '-n', "com.example.testgradle.MainActivity"
+	}
+}
+*/
+
