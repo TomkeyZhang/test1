@@ -86,6 +86,12 @@ android {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+        applicationVariants.all { variant ->
+        	def apk = variant.packageApplication.outputFile;
+       	 	if (variant.zipAlign) {
+        	    variant.zipAlign.outputFile = new File(apk.parentFile.path+"/zipalign/", variant.zipAlign.outputFile.name);
+        	}
+    	}
     }
     //渠道Flavors，我这里写了一些常用的，你们自己改
     productFlavors {
@@ -107,6 +113,7 @@ android {
         xiaomi{}
         umeng{}
     }
+	
 }
 
 //替换AndroidManifest.xml的UMENG_CHANNEL_VALUE字符串为渠道名称
