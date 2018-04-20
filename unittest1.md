@@ -72,8 +72,8 @@ public class CalculatorTest {
 执行完我们就可以很容易通过颜色来看出执行的结果。
 ## JUnit常用注解
 * @Test，最小测试方法注解。
-* @BeforeClass，测试类执行前操作，用于初始化，必须是public static void，且放在类的开始处
-* @AfterClass，测试类执行后操作，用于清理、释放，必须是public static void，且放在类的开始处
+* @BeforeClass，测试类执行前操作，用于初始化，必须是public static void
+* @AfterClass，测试类执行后操作，用于清理、释放，必须是public static void
 * @Before，@Test方法执行前逻辑
 * @After，@Test方法执行后逻辑
 * @Ignored，忽略@Test方法执行
