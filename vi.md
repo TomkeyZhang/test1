@@ -33,7 +33,7 @@
 * 参考网站 [talkingdata](https://www.talkingdata.com/spa/app-analytics/#/productCenter)，帐号TomkeyZhang@gmail.com，密码：imdada0517
 
 
-# 开发时间表
+# 开发时间节点预估
 ## android
 * 完成抓取手机界面截图和控件信息(2018-05-18)
 * 完成根据配置监听事件及上报日志（2018-05-25）
