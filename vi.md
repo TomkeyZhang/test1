@@ -1,5 +1,6 @@
 # 可视化埋点主要功能
-
+流程图：
+![](https://github.com/TomkeyZhang/test1/raw/master/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9F%8B%E7%82%B9.png)
 各个端主要工作：
 
 ## android端
