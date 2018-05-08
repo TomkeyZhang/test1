@@ -1,5 +1,5 @@
 # 可视化埋点
-流程图：
+产品运营可以通过自助（不依赖开发）图形化的方式实现常规事件（click，pv）的埋点，并可以较为实时的查看统计结果。流程图：
 ![](https://github.com/TomkeyZhang/test1/raw/master/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9F%8B%E7%82%B9.png)
 各个端主要工作：
 
