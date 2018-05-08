@@ -28,7 +28,7 @@
 * 图形化的方式展示事件的变化趋势
   + 事件统计页
   ![](https://github.com/TomkeyZhang/test1/raw/master/vi_statistic.png)
-  **说明：** 按天统计事件数、事件达成用户数、每活跃用户发生率和每启动发生数，以图形和表哥的方式呈现
+  **说明：** 按天统计事件数、事件达成用户数、每活跃用户发生率和每启动发生数，以图形和表格的方式呈现
 
 * 参考网站 [talkingdata](https://www.talkingdata.com/spa/app-analytics/#/productCenter)，帐号TomkeyZhang@gmail.com，密码：imdada0517
 
